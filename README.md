@@ -4,8 +4,8 @@
 
 ### Student Info
 
--   Name: YOUR NAME
--   Section: ##
+-   Name: Julia Rissberger
+-   Section: 5
 
 ## Game Design
 
