@@ -17,25 +17,25 @@
 
 ### Game Description
 
-_A brief explanation of your game. Inculde what is the objective for the player. Think about what would go on the back of a game box._
+You play as a slime, who has decided to prove that it is the best fantasy creature/enemy/thing
+by defeating all other creatures it can find!
 
 ### Controls
 
 -   Movement
-    -   Up: 
-    -   Down: 
-    -   Left: 
-    -   Right: 
--   Fire: 
+    -   Up: W
+    -   Down: S
+    -   Left: A
+    -   Right: D
+-   Fire: Space
 
 ## You Additions
 
-_List out what you added to your game to make it different for you_
+High score system
+Multiple enemy types
 
 ## Sources
-
--   _List all project sources here –models, textures, sound clips, assets, etc._
--   _If an asset is from the Unity store, include a link to the page and the author’s name_
+-   Slime character: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 
 ## Known Issues
 
