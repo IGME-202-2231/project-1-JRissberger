@@ -233,7 +233,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6615500265359007064, guid: 364673214c53bf64195632ad39e77ac4, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -8.04
+      value: -7.46
       objectReference: {fileID: 0}
     - target: {fileID: 6615500265359007064, guid: 364673214c53bf64195632ad39e77ac4, type: 3}
       propertyPath: m_LocalPosition.y
@@ -297,3 +297,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   speed: 3
+  bullet: {fileID: 7023889883183199875, guid: 597f338e0b99cce4599f93597286706b, type: 3}
+  enemy1: {fileID: 4500534797761650327, guid: cdb51c97a4e3fcb47b0ef0b8ce732eda, type: 3}
+  player: {fileID: 0}
