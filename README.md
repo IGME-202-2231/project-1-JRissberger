@@ -36,6 +36,8 @@ Multiple enemy types
 
 ## Sources
 -   Slime character: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+-   Projectile: https://pixel-boy.itch.io/ninja-adventure-asset-pack
+-   Enemy 1: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 
 ## Known Issues
 
