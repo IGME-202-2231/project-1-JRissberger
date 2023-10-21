@@ -12,6 +12,40 @@ public class Movement : MonoBehaviour
     [SerializeField]
     GameObject bullet;
 
+    float lives = 3;
+
+    [SerializeField]
+    SpriteRenderer renderer;
+
+    //Renderer size is multipled by half the scale increase used in Unity
+    //Returns min size
+    public float minRectX
+    {
+        get { return transform.position.x - renderer.size.x * 3f; }
+    }
+
+    public float minRectY
+    {
+        get { return transform.position.y - renderer.size.y * 3f; }
+    }
+
+    //Returns max size
+    public float maxRectX
+    {
+        get { return transform.position.x + renderer.size.x * 3f; }
+    }
+
+    public float maxRectY
+    {
+        get { return transform.position.y + renderer.size.y * 3f; }
+    }
+
+    public float Lives
+    {
+        get { return lives; }
+        set { lives = value; }
+    }
+
     //bool isColliding = false;
 
     //List of current bullets

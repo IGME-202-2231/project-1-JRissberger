@@ -18,6 +18,9 @@ public class Manager : MonoBehaviour
         {
             BulletEnemyCollision();
         }
+        
+        PlayerEnemyCollision();
+        Debug.Log(player.Lives);
     }
 
     void BulletEnemyCollision()
@@ -41,6 +44,21 @@ public class Manager : MonoBehaviour
                         player.bullets[i] = null;
                     }
                 }
+            }
+        }
+    }
+
+    void PlayerEnemyCollision()
+    {
+        for (int i = enemies.Count - 1; i >= 0; i--)
+        {
+            if (player.minRectX <= enemies[i].maxRectX &&
+                player.maxRectX >= enemies[i].minRectX &&
+                player.minRectY <= enemies[i].maxRectY &&
+                player.maxRectY >= enemies[i].minRectY)
+            {
+                enemies[i].IsColliding = true;
+                player.Lives -= 1;
             }
         }
     }
