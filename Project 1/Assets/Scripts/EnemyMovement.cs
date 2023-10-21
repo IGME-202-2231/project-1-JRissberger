@@ -10,9 +10,6 @@ public class EnemyMovement : MonoBehaviour
     Vector3 objectPosition;
 
     [SerializeField]
-    GameObject enemy1;
-
-    [SerializeField]
     GameObject player;
 
     [SerializeField]
@@ -25,26 +22,27 @@ public class EnemyMovement : MonoBehaviour
         get { return isColliding ; }
         set { isColliding = value; }
     }
+
     //Returns min size
     public float minRectX
     {
-        get { return transform.position.x - renderer.size.x / 2; }
+        get { return transform.position.x - renderer.size.x * 3.5f; }
     }
 
     public float minRectY
     {
-        get { return transform.position.y - renderer.size.y / 2; }
+        get { return transform.position.y - renderer.size.y * 3.5f; }
     }
 
     //Returns max size
     public float maxRectX
     {
-        get { return transform.position.x + renderer.size.x / 2; }
+        get { return transform.position.x + renderer.size.x * 3.5f; }
     }
 
     public float maxRectY
     {
-        get { return transform.position.y + renderer.size.y / 2; }
+        get { return transform.position.y + renderer.size.y * 3.5f; }
     }
 
     // Start is called before the first frame update
@@ -64,15 +62,13 @@ public class EnemyMovement : MonoBehaviour
             objectPosition.x = Random.Range(10, 15);
             objectPosition.y = Random.Range(-4, 4);
 
-            if (isColliding)
-            {
-                //isColliding = false;
-                renderer.color = Color.red;
-            }
+            //Resets collision status
+            isColliding = false;
         }
 
         //Applies position
         transform.position = objectPosition;
       
     }
+
 }

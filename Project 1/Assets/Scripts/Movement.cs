@@ -7,22 +7,15 @@ public class Movement : MonoBehaviour
     //initial position
     Vector2 objectPosition = Vector2.zero;
 
-    [SerializeField]
-    float speed = 1.0f;
+    float speed = 4.0f;
 
     [SerializeField]
     GameObject bullet;
 
-    [SerializeField]
-    GameObject player;
-
-    bool isColliding = false;
+    //bool isColliding = false;
 
     //List of current bullets
     public List<GameObject> bullets = new List<GameObject> ();
-
-    //Timer for enemy spawning
-    //float spawnTimer = 0f;
 
     void Start()
     {
@@ -86,20 +79,22 @@ public class Movement : MonoBehaviour
         //Applies validated position
         transform.position = objectPosition;
 
-        //Decreases timer
-        //spawnTimer -= Time.deltaTime;
+        //Removes oob bullets
+        BulletPositionCheck();
+    }
 
-        //Spawns when timer reaches zero, then resets timer
-        /*if (spawnTimer <= 0)
+    void BulletPositionCheck()
+    {
+        for (int i = bullets.Count - 1; i >= 0; i--)
         {
-            float y = Random.Range(-4, 4);
-            enemies.Add(Instantiate(enemy1, new Vector3(7, y, 0), Quaternion.identity));
-            spawnTimer = 5;
-        } */
-
-        if (isColliding)
-        {
-            Destroy(player);
+            if (bullets[i] != null)
+            {
+                if (bullets[i].transform.position.x > 10)
+                {
+                    Destroy(bullets[i]);
+                    bullets[i] = null;
+                }
+            }
         }
     }
 }

@@ -8,41 +8,38 @@ public class Manager : MonoBehaviour
     [SerializeField]
     Movement player;
 
-    //List of enemies
-    //TODO: Move this over to player and randomly generate enemies??
     [SerializeField]
     List<EnemyMovement> enemies = new List<EnemyMovement> ();
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
 
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(player.bullets[0].transform.position.y);
-        Debug.Log(enemies[0].minRectY);
+        if (player.bullets.Count > 0)
+        {
+            BulletEnemyCollision();
+        }
     }
 
     void BulletEnemyCollision()
     {
-        for (int i = player.bullets.Count; i >= 0; i--)
+        for (int i = player.bullets.Count - 1; i >= 0; i--)
         {
-            for (int ii = enemies.Count - 1; ii >= 0; ii--)
+            //Checks to ensure bullet hasn't already been removed
+            if (player.bullets[i] != null)
             {
-                //TODO: check this. 
-                if (player.bullets[i].transform.position.x < enemies[ii].maxRectX
-                    && player.bullets[i].transform.position.x > enemies[ii].minRectX
-                    && player.bullets[i].transform.position.y < enemies[ii].maxRectY &&
-                    player.bullets[i].transform.position.y > enemies[ii].minRectY)
-
+                for (int ii = enemies.Count - 1; ii >= 0; ii--)
                 {
-                    /*enemies[ii].IsColliding = true;
-                    Destroy(player.bullets[i].gameObject);
-                    player.bullets[i] = null; */
-                    
+                    //Another check to make sure the bullet still exists
+                    if (player.bullets[i] != null &&
+                    player.bullets[i].transform.position.x <= enemies[ii].maxRectX &&
+                    player.bullets[i].transform.position.x >= enemies[ii].minRectX &&
+                    player.bullets[i].transform.position.y >= enemies[ii].minRectY &&
+                    player.bullets[i].transform.position.y <= enemies[ii].maxRectY)
+                    {
+                        enemies[ii].IsColliding = true;
+                        Destroy(player.bullets[i]);
+                        player.bullets[i] = null;
+                    }
                 }
             }
         }
