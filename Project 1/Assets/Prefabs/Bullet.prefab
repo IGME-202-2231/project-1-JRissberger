@@ -99,3 +99,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 4
   bullet: {fileID: 7023889883183199875}
+  renderer: {fileID: 5773560875269293335}
+  enemies:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}

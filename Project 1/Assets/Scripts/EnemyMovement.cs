@@ -15,9 +15,37 @@ public class EnemyMovement : MonoBehaviour
     [SerializeField]
     GameObject player;
 
-    float minRectY;
+    [SerializeField]
+    SpriteRenderer renderer;
 
-    float maxRectY;
+    bool isColliding = false;
+
+    public bool IsColliding
+    {
+        get { return isColliding ; }
+        set { isColliding = value; }
+    }
+    //Returns min size
+    public float minRectX
+    {
+        get { return transform.position.x - renderer.size.x / 2; }
+    }
+
+    public float minRectY
+    {
+        get { return transform.position.y - renderer.size.y / 2; }
+    }
+
+    //Returns max size
+    public float maxRectX
+    {
+        get { return transform.position.x + renderer.size.x / 2; }
+    }
+
+    public float maxRectY
+    {
+        get { return transform.position.y + renderer.size.y / 2; }
+    }
 
     // Start is called before the first frame update
     void Start()
@@ -29,31 +57,22 @@ public class EnemyMovement : MonoBehaviour
     void Update()
     {
         objectPosition.x -= (speed * Time.deltaTime);
+
+        //Resets position at a random x and y axis off screen
+        if (objectPosition.x < -10 || isColliding)
+        {
+            objectPosition.x = Random.Range(10, 15);
+            objectPosition.y = Random.Range(-4, 4);
+
+            if (isColliding)
+            {
+                //isColliding = false;
+                renderer.color = Color.red;
+            }
+        }
+
+        //Applies position
         transform.position = objectPosition;
-
-        //Destroys if it goes off screen
-        if (objectPosition.x < -10)
-        {
-            //TODO: remove from list on movement script
-            Destroy(enemy1);
-        }
-
-        //updates collision boundaries
-        minRectY = transform.position.y + 1/2;
-        maxRectY = transform.position.y + 1/2;
-
-        Debug.Log(minRectY);
-        Debug.Log(maxRectY);
-        Debug.Log(player.transform.position.y);
-        playerCollision();
-    }
-
-    //TODO: this isn't working. move to different script?
-    void playerCollision()
-    {
-        if (player.transform.position.y > minRectY && player.transform.position.y < maxRectY && player.transform.position.x == objectPosition.x)
-        {
-            Destroy(player);
-        }
+      
     }
 }
