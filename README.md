@@ -1,4 +1,4 @@
-# Project PROJECT_NAME
+# Project Slime Shmup
 
 [Markdown Cheatsheet](https://github.com/adam-p/markdown-here/wiki/Markdown-Here-Cheatsheet)
 
@@ -9,11 +9,11 @@
 
 ## Game Design
 
--   Camera Orientation: _How are the art assets viewed from? (ie. topdown or side)_
--   Camera Movement: _How does the camera move in your game? (if at all)_
--   Player Health: _How are you handling player health? (healthbar, lives, ?)_
--   End Condition: _How does a game/round/level end?_
--   Scoring: _How does the player earn points in your game?_
+-   Camera Orientation: Side
+-   Camera Movement: No camera movement
+-   Player Health: 3 lives
+-   End Condition: When the player loses all 3 lives
+-   Scoring: The player earns points each time they defeat an enemy.
 
 ### Game Description
 
@@ -32,6 +32,7 @@ by defeating all other creatures it can find!
 ## Your Additions
 - Extra enemy types
 - Enemy speed changes based on type of enemy
+- Each enemy type awards a different amount of points to the player
 
 ## Sources
 -   Slime character: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
