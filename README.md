@@ -29,15 +29,14 @@ by defeating all other creatures it can find!
     -   Right: D
 -   Fire: Space
 
-## You Additions
-
-High score system
-Multiple enemy types
+## Your Additions
+- Extra enemy types
+- Enemy speed changes based on type of enemy
 
 ## Sources
 -   Slime character: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 -   Projectile: https://pixel-boy.itch.io/ninja-adventure-asset-pack
--   Enemy 1: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+-   Enemy 1 (Goblin, normal speed): https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 
 ## Known Issues
 
