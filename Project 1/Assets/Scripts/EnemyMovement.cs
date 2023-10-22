@@ -10,12 +10,18 @@ public class EnemyMovement : MonoBehaviour
     Vector3 objectPosition;
 
     [SerializeField]
-    GameObject player;
-
-    [SerializeField]
     SpriteRenderer renderer;
 
     bool isColliding = false;
+
+    //Points awarded when defeated
+    [SerializeField]
+    float points = 10f;
+
+    public float Points
+    {
+        get { return points; }
+    }
 
     public bool IsColliding
     {
@@ -53,7 +59,7 @@ public class EnemyMovement : MonoBehaviour
 
     // Update is called once per frame
     void Update()
-    {
+    { 
         objectPosition.x -= (speed * Time.deltaTime);
 
         //Resets position at a random x and y axis off screen
@@ -68,7 +74,6 @@ public class EnemyMovement : MonoBehaviour
 
         //Applies position
         transform.position = objectPosition;
-      
     }
 
 }

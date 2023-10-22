@@ -17,6 +17,41 @@ public class Movement : MonoBehaviour
     [SerializeField]
     SpriteRenderer renderer;
 
+    //Alerts that game is being reset
+    bool reset;
+
+    public bool Reset
+    {
+        get { return reset; }
+        set { reset = value; }
+    }
+
+    //Player's current score
+    float totalScore;
+
+    public float TotalScore
+    {
+        get { return totalScore; }
+        set { totalScore = value; }
+    }
+
+    //Highest recorded score, displays at game over
+    float highScore = 0;
+
+    public float HighScore
+    {
+        get { return highScore; }
+        set { highScore = value; }
+    }
+
+    //Checks the current state of the game
+    bool gameover = false;
+
+    public bool Gameover
+    {
+        get { return gameover; }
+    }
+
     //Renderer size is multipled by half the scale increase used in Unity
     //Returns min size
     public float minRectX
@@ -46,10 +81,14 @@ public class Movement : MonoBehaviour
         set { lives = value; }
     }
 
-    //bool isColliding = false;
+    public List<GameObject> Bullets
+    {
+        get { return bullets; }
+        set { bullets = value; }
+    }
 
     //List of current bullets
-    public List<GameObject> bullets = new List<GameObject> ();
+    List<GameObject> bullets = new List<GameObject> ();
 
     void Start()
     {
@@ -59,60 +98,84 @@ public class Movement : MonoBehaviour
 
     void Update()
     {
-        //up
-        if(Input.GetKey(KeyCode.W))
+        //Can only play when not in a game over state
+        if (!gameover)
         {
-            objectPosition.y += (speed * Time.deltaTime);
-
-            //oob top
-            if (objectPosition.y > 5)
+            //up
+            if (Input.GetKey(KeyCode.W))
             {
-                objectPosition.y = 5;
+                objectPosition.y += (speed * Time.deltaTime);
+
+                //oob top
+                if (objectPosition.y > 5)
+                {
+                    objectPosition.y = 5;
+                }
+            }
+            //down
+            if (Input.GetKey(KeyCode.S))
+            {
+                objectPosition.y -= (speed * Time.deltaTime);
+
+                //oob bottom
+                if (objectPosition.y < -5)
+                {
+                    objectPosition.y = -5;
+                }
+            }
+            //left
+            if (Input.GetKey(KeyCode.A))
+            {
+                objectPosition.x -= (speed * Time.deltaTime);
+
+                //oob left
+                if (objectPosition.x < (float)-8.5)
+                {
+                    objectPosition.x = (float)-8.5;
+                }
+            }
+            //right
+            if (Input.GetKey(KeyCode.D))
+            {
+                objectPosition.x += (speed * Time.deltaTime);
+                //oob right
+                if (objectPosition.x > -5)
+                {
+                    objectPosition.x = -5;
+                }
+            }
+
+            //Fire
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                //Adds bullet to list
+                bullets.Add(Instantiate(bullet, new Vector3(objectPosition.x, objectPosition.y, 0), Quaternion.identity));
+            }
+
+            //Applies validated position
+            transform.position = objectPosition;
+
+            //Checking for gameover
+            if (lives <= 0)
+            {
+                gameover = true;
+            }
+
+        }
+        else
+        {
+            //Changes player to red
+            renderer.color = Color.red;
+
+            //Resets game
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                lives = 3;
+                totalScore = 0;
+                gameover = false;
+                renderer.color = Color.white;
             }
         }
-        //down
-        if(Input.GetKey(KeyCode.S))
-        {
-            objectPosition.y -= (speed * Time.deltaTime);
-
-            //oob bottom
-            if (objectPosition.y < -5)
-            {
-                objectPosition.y = -5;
-            }
-        }
-        //left
-        if(Input.GetKey(KeyCode.A))
-        {
-            objectPosition.x -= (speed * Time.deltaTime);
-
-            //oob left
-            if (objectPosition.x < (float)-8.5)
-            {
-                objectPosition.x = (float)-8.5;
-            }
-        }
-        //right
-        if(Input.GetKey(KeyCode.D))
-        {
-            objectPosition.x += (speed * Time.deltaTime);
-            //oob right
-            if (objectPosition.x > -6)
-            {
-                objectPosition.x = -6;
-            }
-        }
-
-        //Fire
-        if(Input.GetKeyDown(KeyCode.Space))
-        {
-            //Adds bullet to list
-            bullets.Add(Instantiate(bullet, new Vector3(objectPosition.x, objectPosition.y, 0), Quaternion.identity));           
-        }
-
-        //Applies validated position
-        transform.position = objectPosition;
-
         //Removes oob bullets
         BulletPositionCheck();
     }
