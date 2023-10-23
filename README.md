@@ -31,19 +31,20 @@ by defeating all other creatures it can find!
 
 ## Your Additions
 - Extra enemy types
-- Enemy speed changes based on type of enemy
-- Each enemy type awards a different amount of points to the player
+- High score system
 
 ## Sources
 -   Slime character: https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 -   Projectile: https://pixel-boy.itch.io/ninja-adventure-asset-pack
--   Enemy 1 (Goblin, normal speed): https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+-   Enemy 1 (Goblin, normal speed, 10 points): https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+-   Enemy 2 (Flying creature, high speed, 20 points): https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
+-   Enemy 3 (Skeleton, low speed, 5 points): https://o-lobster.itch.io/simple-dungeon-crawler-16x16-pixel-pack
 
 ## Known Issues
 
-_List any errors, lack of error checking, or specific information that I need to know to run your program_
+No known issues
 
 ### Requirements not completed
 
-_If you did not complete a project requirement, notate that here_
+Enemies were manually placed in scene instead of being spawned by script.
 
