@@ -129,9 +129,9 @@ public class Movement : MonoBehaviour
                 objectPosition.x -= (speed * Time.deltaTime);
 
                 //oob left
-                if (objectPosition.x < (float)-8.5)
+                if (objectPosition.x < -8)
                 {
-                    objectPosition.x = (float)-8.5;
+                    objectPosition.x = -8;
                 }
             }
             //right
